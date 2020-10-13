@@ -19,12 +19,54 @@ library(vembedr)
 
 
 ```{r}
-read_csv("data/homicide-data.csv")
+
+homicide_data <- read_csv("data/homicide-data.csv")
+
+```
+```{r}
+#cleaning data
+homicide_data <- homicide_data %>%
+  mutate(reported_date = as.character(reported_date)) %>%
+  mutate(year = str_sub(reported_date, start = 1L, end = 4L))
+
+homicide_data
 
 ```
 
+#Finding 1: As Baltimore has seen a stunning surge of violence, with nearly a killing each day for the past three years in a city of 600,000, homicide arrests have plummeted. City police made an arrest in 41 percent of homicides in 2014; last year (2018), the rate was just 27 percent, a 14 percentage point drop.
+
+```{r}
+ 
+baltimore_data <- homicide_data %>%
+  filter(city == "Baltimore") %>%
+  
+  group_by
+  
+baltimore_data
+  
+```
+
+#Finding 2: Of 50 of the nation’s largest cities, Baltimore is one of 34 where police now make homicide arrests less often than in 2014, according to a Washington Post analysis. In Chicago, the homicide arrest rate has dropped 21 percentage points, in Boston it has dropped 12 points and in St. Louis it is down 9.
 
 ```{r}
 
 
+
 ```
+
+#Finding 3: Baltimore is also one of 30 cities that have seen an increase in homicides in recent years, with the greatest raw number increase in killings of any city other than Chicago, which has four times the population. While homicide rates remain near historical lows in most American cities, Baltimore and Chicago are now both seeing murder tallies that rival the early 2000s.
+
+```{r}
+
+
+
+```
+
+#Finding 4: While there is evidence for and against a nationwide Ferguson effect — the theory that crime increased after 2014 as police faced more scrutiny following the shooting of Michael Brown in Ferguson, Mo. — in Baltimore there is an indisputable Freddie Gray effect. As violence in the city has risen since 2015, the likelihood of a killer being arrested has dropped precipitously.
+
+```{r}
+
+
+
+```
+
