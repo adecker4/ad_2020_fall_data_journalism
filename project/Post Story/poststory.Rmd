@@ -37,12 +37,33 @@ homicide_data
 
 ```{r}
  
-baltimore_data <- homicide_data %>%
-  filter(city == "Baltimore") %>%
+baltimore_data_year_2014_2017 <- baltimore_data %>%
+  select(year, reported_date, city, state, disposition) %>%
+  filter(year >= "2014") %>%
+  filter(year <= "2018") %>%
+  group_by(year, disposition) %>%
+  count() %>%
+  pivot_wider(names_from = disposition, values_from = n) %>%
+  mutate(total_cases = `Closed by arrest` + `Closed without arrest` + `Open/No arrest`) %>%
+  mutate(arrest_pct = `Closed by arrest` / total_cases * 100) %>%
+  filter(year == 2014 | year == 2017)
+ 
+
+baltimore_data_year_2014_2017
+
+
   
-  group_by
-  
-baltimore_data
+```
+
+```{r}
+baltimore_data_year_pct_change <- baltimore_data_year_2014_2018 %>%
+  sort(reported_date >= "20140101") %>%
+  sort(reported_date <= "20171228")
+
+#comment: I want to create a new column that will sort the dates so that I could calculate the percentage change between year 2014 and year 2018
+
+
+baltimore_data_pct_change
   
 ```
 
@@ -50,15 +71,60 @@ baltimore_data
 
 ```{r}
 
+#Which cities make less amount of arrest?
 
+average_amount_of_arrest <- homicide_data %>%
+  select(year, reported_date, city, state, disposition) %>%
+  filter(year >= "2014") %>%
+  filter(year <= "2017") %>%
+  group_by(city, year, disposition) %>%
+  count() %>%
+  pivot_wider(names_from = disposition, values_from = n) %>%
+  mutate_if(is.numeric , replace_na, replace = 0) %>%
+  mutate(total_cases = `Closed by arrest` + `Closed without arrest` + `Open/No arrest`) %>%
+  mutate(arrest_pct = `Closed by arrest` / total_cases * 100) %>%
+  filter(year == 2014 | year == 2017) %>%
+  select(city, year, arrest_pct) %>%
+  pivot_wider(names_from = year, values_from = arrest_pct) %>%
+  mutate(pct_change = `2014` - `2017`) %>%
+  filter(pct_change >= 1) %>%
+  ungroup() %>%
+  count()
+
+average_amount_of_arrest
 
 ```
 
 #Finding 3: Baltimore is also one of 30 cities that have seen an increase in homicides in recent years, with the greatest raw number increase in killings of any city other than Chicago, which has four times the population. While homicide rates remain near historical lows in most American cities, Baltimore and Chicago are now both seeing murder tallies that rival the early 2000s.
 
 ```{r}
+#define what recent years mean, (DEFINE it ourselves, try to get to 30 cities, calculate increase between 2010 and 2018 and that number is x cities, count number of homicides by city by year, pivot, calculate percentage change between different periods of time, filter to look at number of cities)
+
+#DONT NEED TO REPRODUCE THE LAST SENTENCE
 
 
+average_killings_chicago <- homicide_data %>%
+  filter(city == "Chicago") %>%
+  filter(year >= "2007") %>%
+  filter(year <= "2018") %>%
+  
+average_killings_baltimore <- homicide_data %>%
+  filter(city == "Baltimore") %>%
+  filter(year >= "2007") %>%
+  filter(year <= "2018") %>%
+
+average_amount_of_killings_baltimore
+inner_join()
+
+population_baltimore
+
+population_chicago
+  
+
+
+baltimore_data
+
+chicago_data
 
 ```
 
@@ -66,6 +132,9 @@ baltimore_data
 
 ```{r}
 
+baltimore_data_since_2015 <- baltimore_data %>%
+  group_by(year)
+  filter(year >= "2015") %>%
 
 
 ```
