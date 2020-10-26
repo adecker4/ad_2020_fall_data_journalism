@@ -95,12 +95,11 @@ average_amount_of_arrest
 
 ```
 
-#Finding 3: Baltimore is also one of 30 cities that have seen an increase in homicides in recent years, with the greatest raw number increase in killings of any city other than Chicago, which has four times the population. While homicide rates remain near historical lows in most American cities, Baltimore and Chicago are now both seeing murder tallies that rival the early 2000s.
-
+#Finding 3: Baltimore is also one of 30 cities that have seen an increase in homicides in recent years, with the greatest raw number increase in killings of any city other than Chicago, which has four times the population.
 ```{r}
 #define what recent years mean, (DEFINE it ourselves, try to get to 30 cities, calculate increase between 2010 and 2018 and that number is x cities, count number of homicides by city by year, pivot, calculate percentage change between different periods of time, filter to look at number of cities)
 
-#DONT NEED TO REPRODUCE THE LAST SENTENCE
+
 
 
 average_killings_chicago <- homicide_data %>%
