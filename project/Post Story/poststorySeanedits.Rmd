@@ -254,18 +254,6 @@ city_number_homicides
   # We arranged our new data from lowest to highest
 
 # Baltimore has had the greatest raw number increase in killings of any city but Chicago. 
-
-average_amount_of_killings_chicago <- homicide_data %>%
-filter(city == "Chicago") %>%
-filter(year >= "2007") %>%
-filter(year <= "2018") %>%
-
-average_amount_of_killings_baltimore <- homicide_data %>%
-filter(city == "Baltimore") %>%
-filter(year >= "2007") %>%
-filter(year <= "2018") %>%
-  
-  #comment out this finding
   
   #We filtered the data by choosing only the city of Chicago
   #Ten we filtered the average between 2007 and 2018
