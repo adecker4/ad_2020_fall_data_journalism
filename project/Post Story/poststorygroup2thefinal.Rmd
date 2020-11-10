@@ -217,6 +217,7 @@ In the data we produced, we found that Baltimore is one of 22 cities that have s
 ```{r}
 
 # Baltimore is also one of 30 cities that have seen an increase in homicides in recent years.
+# Baltimore has had the greatest raw number increase in killings of any city but Chicago. 
 
 city_homicide_change <- homicide_data %>%
   group_by(city, year) %>%
@@ -230,28 +231,18 @@ city_homicide_change <- homicide_data %>%
 #display below
 city_homicide_change
 
-# Baltimore has had the greatest raw number increase in killings of any city but Chicago. 
-
-### What we did:
-# create new column of raw number of homicides
-# compare from 2011 to 2017 to show an increase
-# produce Chicago raw killings
-# produce Baltimore raw killings
-
-
-#display below
-city_number_homicides
 
 ### What we did:  
-# created a new data and named it city homicide change
+# created a new data frame and named it city homicide change
 # grouped the desired data by city and year 
 # filtered the year 2011 until 2017, everything in between
-# increased the number of columns and decreased the number of rows by using the pivot wider function. We took the names from those years listed above and the values from the number of homicides
-  # created a new variable that would give us the percent change in homicide from 2011 to 2017
-  # filtered the ones that had a change greater than 0
-  # arranged our new data from lowest to highest
+# tried a few years, struggled to define recent years
+# increased the number of columns and decreased the number of rows by using the pivot wider function. We took the names from those years listed above and the values from the number of homicides. easier to see the results
+# created a new column that would give us the percent change in homicide from 2011 to 2017
+# filtered the ones that had a change greater than 0, to see which cities increased
+# arranged our new data from lowest to highest
+# could answer everything with this code
 
-# Baltimore has had the greatest raw number increase in killings of any city but Chicago. 
 
 ```
 
